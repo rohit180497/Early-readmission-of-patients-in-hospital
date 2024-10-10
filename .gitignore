@@ -5,6 +5,8 @@ __pycache__/
 
 # C extensions
 *.so
+old_data/
+scripts/test.ipynb
 
 # Distribution / packaging
 .Python
