@@ -5,10 +5,10 @@ __pycache__/
 
 # C extensions
 *.so
-old_data/
-scripts/test.ipynb
-leena/
-
+.csv .gitignore
+/data
+/scripts/mlruns
+/models
 # Distribution / packaging
 .Python
 build/
