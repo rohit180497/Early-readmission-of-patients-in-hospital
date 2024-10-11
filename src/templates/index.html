@@ -1,0 +1,142 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Readmission Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Diabetic Patient Readmission Risk Predictor</h1>
+        <form id="prediction-form">
+            <div class="form-row">
+                <div class="form-column">
+                    <!-- Patient ID -->
+                    <label>Patient ID:</label>
+                    <input type="number" required>
+
+
+                    <!-- Time in Hospital -->
+                    <label for="time_in_hospital">Time in Hospital (days):</label>
+                    <input type="number" id="time_in_hospital" name="time_in_hospital"  min="0" max="14" step="1" required>
+
+                    <!-- Number of Lab Procedures -->
+                    <label for="num_lab_procedures">Number of Lab Tests:</label>
+                    <input type="number" id="num_lab_procedures" name="num_lab_procedures" min="0" max="100" step="1" required>
+
+                    <!-- Number of Procedures -->
+                    <label for="num_procedures">Number of Procedures:</label>
+                    <input type="number" id="num_procedures" name="num_procedures" min="0" max="50" step="1" required>
+
+                    <!-- Number of Medications -->
+                    <label for="num_medications">Number of Medications:</label>
+                    <input type="number" id="num_medications" name="num_medications" min="0" max="80" step="1" required>
+
+                    <!-- Number of Emergency Visits -->
+                    <label for="number_emergency">Number of Emergency Visits:</label>
+                    <input type="number" id="number_emergency" name="number_emergency" min="0" max="80" step="1" required>
+
+                    <!-- Number of Diagnoses -->
+                    <label for="number_diagnoses">Number of Diagnoses:</label>
+                    <input type="number" id="number_diagnoses" name="number_diagnoses" min="0" max="50" step="1" required>
+
+                    <!-- Number of Outpatient Treated -->
+                    <label for="number_outpatient_treated">Number of Visits (Outpatient):</label>
+                    <input type="number" id="number_outpatient_treated" name="number_outpatient_treated" min="0" max="40"
+                        step="1" required>
+                </div>
+
+                <div class="form-column">
+                    <!-- Number of Inpatient Treated -->
+                    <label for="number_inpatient_treated">Number of Visits (Inpatient):</label>
+                    <input type="number" id="number_inpatient_treated" name="number_inpatient_treated" min="0" max="25" step="1"
+                        required>
+
+                    <!-- Max Glu Serum -->
+                    <label for="max_glu_serum">Glucose Serum Level:</label>
+                    <select id="max_glu_serum" name="max_glu_serum" required>
+                        <option value="" hidden></option>
+                        <option value="No">No</option>
+                        <option value=">300">>300</option>
+                        <option value="Norm">Norm</option>
+                        <option value=">200">>200</option>
+                    </select>
+
+                    <!-- A1C Result -->
+                    <label for="A1Cresult">A1C Test Result (Blood Sugar Control):</label>
+                    <select id="A1Cresult" name="A1Cresult" required>
+                        <option value="" hidden></option>
+                        <option value="No">No</option>
+                        <option value=">7">>7</option>
+                        <option value=">8">>8</option>
+                        <option value="Norm">Norm</option>
+                    </select>
+
+                    <!-- Insulin -->
+                    <label for="insulin">Insulin Dosage Adjustment:</label>
+                    <select id="insulin" name="insulin" required>
+                        <option value="" hidden></option>
+                        <option value="0">No change</option>
+                        <option value="1">Steady dosage</option>
+                        <option value="2">Increase in dosage</option>
+                        <option value="-1">Decrease in dosage</option>
+                    </select>
+
+                    <!-- DiabetesMed -->
+                    <label for="diabetesMed">Diabetes Medication Status:</label>
+                    <select id="diabetesMed" name="diabetesMed" required>
+                        <option value="" hidden></option>
+                        <option value="True">Yes</option>
+                        <option value="False">No</option>
+                    </select>
+
+                    <!-- Admission Type Description -->
+                    <label for="admission_type_desc">Type of Admission:</label>
+                    <select id="admission_type_desc" name="admission_type_desc" required>
+                        <option value="" hidden></option>
+                        <option value="Urgent">Urgent</option>
+                        <option value="Elective">Elective</option>
+                        <option value="Emergency">Emergency</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <!-- Discharge Category -->
+                    <label for="discharge_category">Discharge Status:</label>
+                    <select id="discharge_category" name="discharge_category" required>
+                        <option value="" hidden></option>
+                        <option value="Discharged to Home">Discharged to Home</option>
+                        <option value="Transfers to Other Healthcare Facilities">Transfers to Other Healthcare
+                            Facilities</option>
+                        <option value="AMA (Against Medical Advice)">AMA (Against Medical Advice)</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <!-- Admission Category -->
+                    <label for="admission_category">Admission Category:</label>
+                    <select id="admission_category" name="admission_category" required>
+                        <option value="" hidden></option>
+                        <option value="Transfers from Other Facilities">Transfers from Other Facilities</option>
+                        <option value="Emergency Admission">Emergency Admission</option>
+                        <option value="Physician Referral">Physician Referral</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Predict Readmission</button>
+        </form>
+
+        <!-- Prediction Result -->
+        <div id="result">
+            <!-- The prediction result will be displayed here -->
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
