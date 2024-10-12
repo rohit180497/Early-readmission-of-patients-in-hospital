@@ -1,0 +1,66 @@
+pipeline {
+    agent any
+
+    environment {
+        AWS_CREDENTIALS_ID = 'aws-jenkins-user'  // The name of AWS credentials in Jenkins
+        ECR_REPOSITORY = 'early-readmission-of-diabetic-patients-in-hospital'
+        REGION = 'us-east-1'  
+        IMAGE_TAG = "latest"
+        AWS_ACCOUNT_ID = "637423176441"
+    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                // Pull your project code from GitHub
+                git 'https://github.com/rohit180497/Early-readmission-of-patients-in-hospital.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build the Docker image
+                    sh "docker build -t ${ECR_REPOSITORY}:${IMAGE_TAG} ."
+                }
+            }
+        }
+
+        stage('Login to AWS ECR') {
+            steps {
+                script {
+                    // Login to AWS ECR using Jenkins credentials
+                    sh "aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com"
+                }
+            }
+        }
+
+        stage('Tag and Push Docker Image to ECR') {
+            steps {
+                script {
+                    // Tag the image and push to AWS ECR
+                    sh "docker tag ${ECR_REPOSITORY}:${IMAGE_TAG} ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_REPOSITORY}:${IMAGE_TAG}"
+                    sh "docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_REPOSITORY}:${IMAGE_TAG}"
+                }
+            }
+        }
+
+        stage('Deploy to AWS ECS (Fargate)') {
+            steps {
+                script {
+                    // Update ECS task definition and service with the new image
+                    sh """
+                    aws ecs update-service --cluster your-cluster-name --service your-service-name \
+                    --force-new-deployment --region ${REGION}
+                    """
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}

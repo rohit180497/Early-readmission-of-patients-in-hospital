@@ -2,9 +2,12 @@
 
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
+import boto3
 import pickle
 import numpy as np
 import pandas as pd
+from datetime import datetime   
+import json
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
@@ -54,7 +57,42 @@ FEATURES = [
 ]
 
 
- 
+
+# Initialize S3 client
+s3 = boto3.client('s3')
+bucket_name = 'hospital-readmission-predictions'
+
+
+def save_response_to_s3(patient_id, input_data, probability):
+    # Check for None values before converting
+    if patient_id is None:
+        raise ValueError("patient_id is None. Cannot convert to integer.")
+    if probability is None:
+        raise ValueError("probability is None. Cannot convert to integer.")
+
+    # Ensure input_data is JSON serializable
+    if isinstance(input_data, np.ndarray):
+        input_data = input_data.tolist()
+
+    # Prepare response data
+    response_data = {
+        "Patient ID": int(patient_id),    
+        "Input Request": input_data,
+        "prediction": float(probability),
+        "timestamp": datetime.now().isoformat()
+    }
+    
+    # Create unique S3 key (file path)
+    s3_key = f"responses/{patient_id}_{datetime.now().strftime('%Y%m%d%H%M%S')}.json"
+    
+    # Upload to S3
+    s3.put_object(
+        Bucket=bucket_name,
+        Key=s3_key,
+        Body=json.dumps(response_data),
+        ContentType="application/json"
+    )
+
 
 @app.route('/')
 def home():
@@ -101,7 +139,9 @@ def predict():
             'admission_category_Transfers from Other Facilities':0
         }
 
-        # Validate and process each feature
+
+        patient_id = data.get('patient_id')
+        # Validating and processing each feature
 
         # 1. time_in_hospital
         time_in_hospital = data.get('time_in_hospital')
@@ -308,16 +348,22 @@ def predict():
         input_array = input_df.values
 
         # Make prediction
-        prediction = model.predict(input_array)[0]
-        prediction_proba = model.predict_proba(input_array)[0][1]  # Probability of class '1'
+        # input_df = pd.DataFrame(input_array, columns=FEATURES)
+        prediction = model.predict(input_df)[0]
+        prediction_proba = model.predict_proba(input_df)[0][1] 
+        # prediction = model.predict(input_array)[0]
+        # prediction_proba = model.predict_proba(input_array)[0][1]  # Probability of class '1'
 
         #Prepare the response
         response = {
             'prediction': int(prediction),
             'probability': float(prediction_proba)
         }
+        print(patient_id)
 
-       
+        # After getting the prediction, store the response to S3
+        save_response_to_s3(patient_id, input_data, prediction_proba)        
+
         return jsonify(response)
 
     except Exception as e:

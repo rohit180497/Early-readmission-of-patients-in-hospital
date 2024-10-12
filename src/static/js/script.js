@@ -4,6 +4,7 @@ document.getElementById('prediction-form').addEventListener('submit', function(e
     e.preventDefault();  // Prevent the default form submission
 
     // Collect form data
+    const patient_id = parseInt(document.getElementById('patient_id').value);
     const time_in_hospital = parseInt(document.getElementById('time_in_hospital').value);
     const num_lab_procedures = parseFloat(document.getElementById('num_lab_procedures').value);
     const num_procedures = parseInt(document.getElementById('num_procedures').value);
@@ -91,6 +92,7 @@ document.getElementById('prediction-form').addEventListener('submit', function(e
 
     // Create a data object to send to the backend
     const data = {
+        'patient_id': patient_id,
         'time_in_hospital': time_in_hospital,
         'num_lab_procedures': num_lab_procedures,
         'num_procedures': num_procedures,
