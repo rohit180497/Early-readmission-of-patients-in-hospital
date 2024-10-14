@@ -359,7 +359,6 @@ def predict():
             'prediction': int(prediction),
             'probability': float(prediction_proba)
         }
-        print(patient_id)
 
         # After getting the prediction, store the response to S3
         save_response_to_s3(patient_id, input_data, prediction_proba)        
