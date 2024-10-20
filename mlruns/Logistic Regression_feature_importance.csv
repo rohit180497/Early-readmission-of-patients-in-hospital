@@ -1,0 +1,48 @@
+Feature,Importance
+number_inpatient_log,0.8216587110789543
+admission_category_Transfers from Other Facilities,0.6596610379177227
+number_emergency_log,0.40704426506688524
+number_outpatient_log,0.28907950251239173
+admission_category_Other,0.2809449036728137
+admission_category_Physician Referral,0.1944178027017047
+diabetesMed_Yes,0.1466822026192205
+discharge_category_Other,0.11823671446444665
+metformin,0.11529453203625888
+payer_code_group_Self-Pay/Other,0.11412763676623024
+change_No,0.10388222070051896
+race_Other,0.09399549446159933
+number_diagnoses,0.0908225450325966
+admission_type_desc_Emergency,0.08379604633564991
+diag_3_cat_Other,0.07046317428087805
+admission_type_desc_Other,0.050387505707214085
+num_procedures,0.03655147686295673
+insulin,0.022649762579255037
+race_Caucasian,0.013171980545690125
+time_in_hospital,0.006990746448777087
+max_glu_serum_Norm,0.005185403227935118
+payer_code_group_Private Insurance,0.003185570154690132
+num_medications,0.0026064525655406703
+A1Cresult_Norm,0.002331596495398434
+Patient_Age,0.0008256355656877458
+num_lab_procedures,0.00010718083850728726
+encounter_id,1.8222261381012489e-09
+race_Hispanic,0.0
+race_Asian,0.0
+max_glu_serum_>300,0.0
+A1Cresult_No,0.0
+discharge_category_Transfers to Other Healthcare Facilities,0.0
+discharge_category_Discharged to Home,0.0
+admission_type_desc_Urgent,0.0
+A1Cresult_>8,0.0
+max_glu_serum_No,0.0
+Specialty_Group_Internal Medicine,0.0
+Specialty_Group_Surgery,0.0
+Specialty_Group_Family/General Practice,0.0
+Specialty_Group_Other,0.0
+diag_3_cat_Diabetes,0.0
+diag_3_cat_Genitourinary,0.0
+diag_3_cat_Digestive,0.0
+diag_3_cat_Injury,0.0
+diag_3_cat_Musculoskeletal,0.0
+diag_3_cat_Neoplasms,0.0
+diag_3_cat_Respiratory,0.0

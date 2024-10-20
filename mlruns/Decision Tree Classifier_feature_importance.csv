@@ -1,0 +1,48 @@
+Feature,Importance
+number_inpatient_log,0.35295823771509405
+encounter_id,0.1279298809240091
+number_diagnoses,0.09085904039366202
+Patient_Age,0.07181122916673896
+num_lab_procedures,0.04848790165034646
+num_medications,0.04044452584269037
+admission_category_Transfers from Other Facilities,0.037639204289569815
+number_outpatient_log,0.032734645359101526
+number_emergency_log,0.02711079161920319
+diabetesMed_Yes,0.020933518255331934
+time_in_hospital,0.02073843936183941
+num_procedures,0.016327449493572448
+admission_category_Physician Referral,0.01302398759096567
+race_Caucasian,0.009448174041795676
+insulin,0.007728277365887198
+admission_type_desc_Emergency,0.00577959457056988
+discharge_category_Transfers to Other Healthcare Facilities,0.005631510346440141
+admission_category_Other,0.004771019124344077
+payer_code_group_Self-Pay/Other,0.0046245503103673645
+diag_3_cat_Other,0.004515440809951821
+diag_3_cat_Diabetes,0.004468938263596205
+Specialty_Group_Other,0.0037858042377513844
+admission_type_desc_Other,0.0034317575261050295
+max_glu_serum_Norm,0.0034025607368715453
+race_Other,0.0033569833859425336
+diag_3_cat_Genitourinary,0.003286241854325501
+discharge_category_Discharged to Home,0.0032449629597903333
+admission_type_desc_Urgent,0.0031790566418671705
+metformin,0.003134578721665988
+A1Cresult_No,0.0024727469948735187
+A1Cresult_>8,0.0024035131389017247
+payer_code_group_Private Insurance,0.0022449740103453095
+diag_3_cat_Neoplasms,0.001978904714508429
+max_glu_serum_No,0.0018790240722850729
+diag_3_cat_Musculoskeletal,0.0016976245705385884
+diag_3_cat_Respiratory,0.0016832752396180413
+diag_3_cat_Injury,0.001635556783130014
+Specialty_Group_Surgery,0.0015857567087726094
+Specialty_Group_Internal Medicine,0.0015653609116819624
+change_No,0.001478372873367017
+discharge_category_Other,0.0013900120610682363
+race_Hispanic,0.0012156553659310996
+diag_3_cat_Digestive,0.0009266371938553192
+race_Asian,0.0007369171493893532
+max_glu_serum_>300,0.0003173656523370151
+A1Cresult_Norm,0.0
+Specialty_Group_Family/General Practice,0.0

@@ -1,0 +1,48 @@
+Feature,Importance
+number_inpatient_log,0.27014090593426937
+number_diagnoses,0.09104459330422035
+encounter_id,0.07798991745801814
+number_emergency_log,0.06200381208550151
+number_outpatient_log,0.05597273748795036
+Patient_Age,0.05465043383542224
+num_medications,0.051441856650482384
+num_lab_procedures,0.04484316933610032
+admission_category_Transfers from Other Facilities,0.03524454650762188
+time_in_hospital,0.028256602030563304
+num_procedures,0.023335564343056035
+insulin,0.017567184845401422
+diabetesMed_Yes,0.01347095222414357
+admission_category_Physician Referral,0.010860602374300282
+payer_code_group_Self-Pay/Other,0.009149856369577571
+metformin,0.009090761455082788
+discharge_category_Transfers to Other Healthcare Facilities,0.008862251926399604
+admission_type_desc_Other,0.008076409654327703
+race_Caucasian,0.007854131203322203
+discharge_category_Discharged to Home,0.007828241034536826
+admission_type_desc_Emergency,0.007043671065863156
+admission_type_desc_Urgent,0.006789538582424717
+race_Other,0.006658904655126472
+change_No,0.006565664538416884
+payer_code_group_Private Insurance,0.006364008606747838
+admission_category_Other,0.006280409155699079
+Specialty_Group_Other,0.006092672101731065
+diag_3_cat_Other,0.005754099539753966
+max_glu_serum_No,0.00575196040534635
+A1Cresult_No,0.004898329902496285
+diag_3_cat_Diabetes,0.004544294267804347
+A1Cresult_>8,0.0039931509641014384
+max_glu_serum_Norm,0.0038598957728138475
+diag_3_cat_Respiratory,0.0038508377110004015
+A1Cresult_Norm,0.0037508350848852994
+discharge_category_Other,0.00371229756638032
+diag_3_cat_Genitourinary,0.0035985234450009703
+Specialty_Group_Surgery,0.003325438617341772
+Specialty_Group_Internal Medicine,0.0033055347250192813
+diag_3_cat_Neoplasms,0.002853035029425153
+diag_3_cat_Digestive,0.0027966955649520574
+race_Hispanic,0.002510536320354315
+diag_3_cat_Injury,0.0023926469454464655
+max_glu_serum_>300,0.0023438494676641173
+diag_3_cat_Musculoskeletal,0.0019784956062230794
+race_Asian,0.0011327991656953878
+Specialty_Group_Family/General Practice,0.00016734513198803197
