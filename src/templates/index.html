@@ -12,121 +12,184 @@
     <div class="container">
         <h1>Diabetic Patient Readmission Risk Predictor</h1>
         <form id="prediction-form">
-            <div class="form-row">
-                <div class="form-column">
-                    <!-- Patient ID -->
-                    <label for="patient_id">Patient ID:</label>
-                    <input type="number" id="time_in_hospital" name="time_in_hospital" required>
+            <div class="form-container">
+                <!-- Full-width Patient ID -->
+                <div class="form-row full-width">
+                    <label for="Patient_Id">Patient ID:</label>
+                    <input type="number" id="Patient_Id" name="Patient_Id" required>
+                </div>
+                <div class="form-row">
 
-                    <!-- Time in Hospital -->
-                    <label for="time_in_hospital">Time in Hospital (days):</label>
-                    <input type="number" id="patient_id" name="patient_id"  min="0" max="14" step="1" required>
+                    <div class="form-column">
 
-                    <!-- Number of Lab Procedures -->
-                    <label for="num_lab_procedures">Number of Lab Tests:</label>
-                    <input type="number" id="num_lab_procedures" name="num_lab_procedures" min="0" max="100" step="1" required>
 
-                    <!-- Number of Procedures -->
-                    <label for="num_procedures">Number of Procedures:</label>
-                    <input type="number" id="num_procedures" name="num_procedures" min="0" max="50" step="1" required>
+                        <!-- Patient Age -->
+                        <label for="Patient_Age">Patient Age (years):</label>
+                        <input type="number" id="Patient_Age" name="Patient_Age" min="0" max="100" step="1" required>
 
-                    <!-- Number of Medications -->
-                    <label for="num_medications">Number of Medications:</label>
-                    <input type="number" id="num_medications" name="num_medications" min="0" max="80" step="1" required>
+                        <!-- Race -->
+                        <label for="race">Race:</label>
+                        <select id="race" name="race" required>
+                            <option value="" hidden></option>
+                            <option value="Asian">Asian</option>
+                            <option value="AfricanAmerican">African American</option>
+                            <option value="Caucasian">Caucasian</option>
+                            <option value="Hispanic">Hispanic</option>
+                            <option value="Other">Other</option>
+                        </select>
 
-                    <!-- Number of Emergency Visits -->
-                    <label for="number_emergency">Number of Emergency Visits:</label>
-                    <input type="number" id="number_emergency" name="number_emergency" min="0" max="80" step="1" required>
+                        <!-- Number of Outpatient Treated -->
+                        <label for="number_outpatient_treated">Number of Visits (Outpatient):</label>
+                        <input type="number" id="number_outpatient_treated" name="number_outpatient_treated" min="0"
+                            max="40" step="1" required>
 
-                    <!-- Number of Diagnoses -->
-                    <label for="number_diagnoses">Number of Diagnoses:</label>
-                    <input type="number" id="number_diagnoses" name="number_diagnoses" min="0" max="50" step="1" required>
+                        <!-- Number of Inpatient Treated -->
+                        <label for="number_inpatient_treated">Number of Visits (Inpatient):</label>
+                        <input type="number" id="number_inpatient_treated" name="number_inpatient_treated" min="0"
+                            max="25" step="1" required>
 
-                    <!-- Number of Outpatient Treated -->
-                    <label for="number_outpatient_treated">Number of Visits (Outpatient):</label>
-                    <input type="number" id="number_outpatient_treated" name="number_outpatient_treated" min="0" max="40"
-                        step="1" required>
+                        <!-- Number of Emergency Visits -->
+                        <label for="number_emergency">Number of Emergency Visits:</label>
+                        <input type="number" id="number_emergency" name="number_emergency" min="0" max="80" step="1"
+                            required>
+
+                        <!-- Type of Admission -->
+                        <label for="admission_type_desc">Type of Admission:</label>
+                        <select id="admission_type_desc" name="admission_type_desc" required>
+                            <option value="" hidden></option>
+                            <option value="Urgent">Urgent</option>
+                            <option value="Elective">Elective</option>
+                            <option value="Emergency">Emergency</option>
+                            <option value="Other">Other</option>
+                        </select>
+
+                        <!-- Admission Category -->
+                        <label for="admission_category">Admission Category:</label>
+                        <select id="admission_category" name="admission_category" required>
+                            <option value="" hidden></option>
+                            <option value="Transfers from Other Facilities">Transfers from Other Facilities</option>
+                            <option value="Emergency Admission">Emergency Admission</option>
+                            <option value="Physician Referral">Physician Referral</option>
+                            <option value="Other">Other</option>
+                        </select>
+
+                        <!-- Diagnosis Category -->
+                        <label for="diag_3_cat">Diagnosis Category:</label>
+                        <select id="diag_3_cat" name="diag_3_cat" required>
+                            <option value="" hidden></option>
+                            <option value="Respiratory">Respiratory</option>
+                            <option value="Diabetes">Diabetes</option>
+                            <option value="Injury">Injury</option>
+                            <option value="Neoplasms">Neoplasms</option>
+                            <option value="Circulatory">Circulatory</option>
+                            <option value="Genitourinary">Genitourinary</option>
+                            <option value="Musculoskeletal">Musculoskeletal</option>
+                            <option value="Digestive">Digestive</option>
+                            <option value="Other">Other</option>
+                        </select>
+
+                        <!-- Time in Hospital -->
+                        <label for="time_in_hospital">Time in Hospital (days):</label>
+                        <input type="number" id="time_in_hospital" name="time_in_hospital" min="0" max="14" step="1"
+                            required>
+
+                        <!-- Number of Lab Tests -->
+                        <label for="num_lab_procedures">Number of Lab Tests:</label>
+                        <input type="number" id="num_lab_procedures" name="num_lab_procedures" min="0" max="100"
+                            step="1" required>
+
+                        
+                    </div>
+
+                    <div class="form-column">
+
+                        <!-- Number of Procedures -->
+                        <label for="num_procedures">Number of Procedures:</label>
+                        <input type="number" id="num_procedures" name="num_procedures" min="0" max="50" step="1"
+                            required>
+
+                        <!-- Number of Diagnoses -->
+                        <label for="number_diagnoses">Number of Diagnoses:</label>
+                        <input type="number" id="number_diagnoses" name="number_diagnoses" min="0" max="50" step="1"
+                            required>
+
+                        <!-- A1C Result -->
+                        <label for="A1Cresult">A1C Test Result (Blood Sugar Control):</label>
+                        <select id="A1Cresult" name="A1Cresult" required>
+                            <option value="" hidden></option>
+                            <option value="No">No</option>
+                            <option value=">7">>7</option>
+                            <option value=">8">>8</option>
+                            <option value="Norm">Norm</option>
+                        </select>
+
+                        <!-- Number of Medications -->
+                        <label for="num_medications">Number of Medications:</label>
+                        <input type="number" id="num_medications" name="num_medications" min="0" max="80" step="1"
+                            required>
+
+                        <!-- On Diabetes Medication -->
+                        <label for="diabetesMed">On Diabetes Medication:</label>
+                        <select id="diabetesMed" name="diabetesMed" required>
+                            <option value="" hidden></option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+
+                        <!-- Change in Medication -->
+                        <label for="change">Change in Medication:</label>
+                        <select id="change" name="change" required>
+                            <option value="" hidden></option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+
+                        <!-- Metformin Dosage Adjustment -->
+                        <label for="metformin">Metformin Dosage Adjustment:</label>
+                        <select id="metformin" name="metformin" required>
+                            <option value="" hidden></option>
+                            <option value="0">No change</option>
+                            <option value="1">Steady dosage</option>
+                            <option value="2">Increase in dosage</option>
+                            <option value="-1">Decrease in dosage</option>
+                        </select>
+
+                        <!-- Insulin Dosage Adjustment -->
+                        <label for="insulin">Insulin Dosage Adjustment:</label>
+                        <select id="insulin" name="insulin" required>
+                            <option value="" hidden></option>
+                            <option value="0">No change</option>
+                            <option value="1">Steady dosage</option>
+                            <option value="2">Increase in dosage</option>
+                            <option value="-1">Decrease in dosage</option>
+                        </select>
+
+                        <!-- Discharge Status -->
+                        <label for="discharge_category">Discharge Status:</label>
+                        <select id="discharge_category" name="discharge_category" required>
+                            <option value="" hidden></option>
+                            <option value="Discharged to Home">Discharged to Home</option>
+                            <option value="Transfers to Other Healthcare Facilities">Transfers to Other Healthcare
+                                Facilities</option>
+                            <option value="AMA (Against Medical Advice)">AMA (Against Medical Advice)</option>
+                            <option value="Other">Other</option>
+                        </select>
+
+                        <!-- Type of Payer -->
+                        <label for="payer_code_group">Type of Payer:</label>
+                        <select id="payer_code_group" name="payer_code_group" required>
+                            <option value="" hidden></option>
+                            <option value="Self-Pay/Other">Self-Pay/Other</option>
+                            <option value="Private Insurance">Private Insurance</option>
+                            <option value="Government Programs">Government Programs</option>
+                            
+                        </select>
+                    </div>
+
                 </div>
 
-                <div class="form-column">
-                    <!-- Number of Inpatient Treated -->
-                    <label for="number_inpatient_treated">Number of Visits (Inpatient):</label>
-                    <input type="number" id="number_inpatient_treated" name="number_inpatient_treated" min="0" max="25" step="1"
-                        required>
-
-                    <!-- Max Glu Serum -->
-                    <label for="max_glu_serum">Glucose Serum Level:</label>
-                    <select id="max_glu_serum" name="max_glu_serum" required>
-                        <option value="" hidden></option>
-                        <option value="No">No</option>
-                        <option value=">300">>300</option>
-                        <option value="Norm">Norm</option>
-                        <option value=">200">>200</option>
-                    </select>
-
-                    <!-- A1C Result -->
-                    <label for="A1Cresult">A1C Test Result (Blood Sugar Control):</label>
-                    <select id="A1Cresult" name="A1Cresult" required>
-                        <option value="" hidden></option>
-                        <option value="No">No</option>
-                        <option value=">7">>7</option>
-                        <option value=">8">>8</option>
-                        <option value="Norm">Norm</option>
-                    </select>
-
-                    <!-- Insulin -->
-                    <label for="insulin">Insulin Dosage Adjustment:</label>
-                    <select id="insulin" name="insulin" required>
-                        <option value="" hidden></option>
-                        <option value="0">No change</option>
-                        <option value="1">Steady dosage</option>
-                        <option value="2">Increase in dosage</option>
-                        <option value="-1">Decrease in dosage</option>
-                    </select>
-
-                    <!-- DiabetesMed -->
-                    <label for="diabetesMed">Diabetes Medication Status:</label>
-                    <select id="diabetesMed" name="diabetesMed" required>
-                        <option value="" hidden></option>
-                        <option value="True">Yes</option>
-                        <option value="False">No</option>
-                    </select>
-
-                    <!-- Admission Type Description -->
-                    <label for="admission_type_desc">Type of Admission:</label>
-                    <select id="admission_type_desc" name="admission_type_desc" required>
-                        <option value="" hidden></option>
-                        <option value="Urgent">Urgent</option>
-                        <option value="Elective">Elective</option>
-                        <option value="Emergency">Emergency</option>
-                        <option value="Other">Other</option>
-                    </select>
-
-                    <!-- Discharge Category -->
-                    <label for="discharge_category">Discharge Status:</label>
-                    <select id="discharge_category" name="discharge_category" required>
-                        <option value="" hidden></option>
-                        <option value="Discharged to Home">Discharged to Home</option>
-                        <option value="Transfers to Other Healthcare Facilities">Transfers to Other Healthcare
-                            Facilities</option>
-                        <option value="AMA (Against Medical Advice)">AMA (Against Medical Advice)</option>
-                        <option value="Other">Other</option>
-                    </select>
-
-                    <!-- Admission Category -->
-                    <label for="admission_category">Admission Category:</label>
-                    <select id="admission_category" name="admission_category" required>
-                        <option value="" hidden></option>
-                        <option value="Transfers from Other Facilities">Transfers from Other Facilities</option>
-                        <option value="Emergency Admission">Emergency Admission</option>
-                        <option value="Physician Referral">Physician Referral</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Submit Button -->
-            <button type="submit">Predict Readmission</button>
+                <!-- Submit Button -->
+                <button type="submit">Predict Readmission</button>
         </form>
 
         <!-- Prediction Result -->
@@ -134,6 +197,8 @@
             <!-- The prediction result will be displayed here -->
         </div>
     </div>
+    </div>
+
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>

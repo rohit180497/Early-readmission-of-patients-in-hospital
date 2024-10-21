@@ -4,7 +4,15 @@ document.getElementById('prediction-form').addEventListener('submit', function(e
     e.preventDefault();  // Prevent the default form submission
 
     // Collect form data
-    const patient_id = parseInt(document.getElementById('patient_id').value);
+    const Patient_Id = document.getElementById('Patient_Id').value;
+
+    const Patient_Age = parseInt(document.getElementById('Patient_Age').value);
+    const change = document.getElementById('change').value;
+    const payer_code_group = document.getElementById('payer_code_group').value;
+    const race = document.getElementById('race').value;
+    const diag_3_cat = document.getElementById('diag_3_cat').value;
+
+
     const time_in_hospital = parseInt(document.getElementById('time_in_hospital').value);
     const num_lab_procedures = parseFloat(document.getElementById('num_lab_procedures').value);
     const num_procedures = parseInt(document.getElementById('num_procedures').value);
@@ -13,10 +21,11 @@ document.getElementById('prediction-form').addEventListener('submit', function(e
     const number_diagnoses = parseInt(document.getElementById('number_diagnoses').value);
     const number_outpatient_treated = parseFloat(document.getElementById('number_outpatient_treated').value);
     const number_inpatient_treated = parseFloat(document.getElementById('number_inpatient_treated').value);
-    const max_glu_serum = document.getElementById('max_glu_serum').value;
     const A1Cresult = document.getElementById('A1Cresult').value;
     const insulin = parseInt(document.getElementById('insulin').value);
-    const diabetesMed = document.getElementById('diabetesMed').value === 'true' ? true : false;
+    const metformin = parseInt(document.getElementById('metformin').value);
+
+    const diabetesMed = document.getElementById('diabetesMed').value;
     const admission_type_desc = document.getElementById('admission_type_desc').value;
     const discharge_category = document.getElementById('discharge_category').value;
     const admission_category = document.getElementById('admission_category').value;
@@ -56,10 +65,6 @@ document.getElementById('prediction-form').addEventListener('submit', function(e
         errors.push("Number of Inpatient Treated must be a non-negative number.");
     }
 
-    if (max_glu_serum === "") {
-        errors.push("Max Glu Serum is required.");
-    }
-
     if (A1Cresult === "") {
         errors.push("A1C Result is required.");
     }
@@ -92,7 +97,12 @@ document.getElementById('prediction-form').addEventListener('submit', function(e
 
     // Create a data object to send to the backend
     const data = {
-        'patient_id': patient_id,
+        'Patient_Id':Patient_Id,
+        'Patient_Age':Patient_Age,
+        'change' : change,
+        'payer_code_group':payer_code_group,
+        'race':race,
+        'diag_3_cat':diag_3_cat,
         'time_in_hospital': time_in_hospital,
         'num_lab_procedures': num_lab_procedures,
         'num_procedures': num_procedures,
@@ -101,9 +111,9 @@ document.getElementById('prediction-form').addEventListener('submit', function(e
         'number_diagnoses': number_diagnoses,
         'number_outpatient_treated': number_outpatient_treated,
         'number_inpatient_treated': number_inpatient_treated,
-        'max_glu_serum': max_glu_serum,
         'A1Cresult': A1Cresult,
         'insulin': insulin,
+        'metformin':metformin,
         'diabetesMed': diabetesMed,
         'admission_type_desc': admission_type_desc,
         'discharge_category': discharge_category,
@@ -125,19 +135,29 @@ document.getElementById('prediction-form').addEventListener('submit', function(e
         } else {
             const prediction = result.prediction === 1 ? "Readmitted within 30 days" : "Not Readmitted within 30 days";
             const probability = (result.probability * 100).toFixed(2);
-    
+            var status = "";
+            if(probability < 42.00) {
+                status="Low";
+            } else if(probability < 55.00) {
+                status = "Medium";
+            } else {
+                status = "High";
+            }    
             // Get the result element
             const resultDiv = document.getElementById('result');
     
             // Set the message
             resultDiv.innerHTML = `
-                <p><strong>${probability}% chance that the patient will be readmitted to the hospital.</strong></p>
+                <p><strong>${status} chance that the patient will be readmitted to the hospital.</strong></p>
+                <p></p>
+
+                <p><strong>Probability: ${probability}%</strong></p>
             `;
     
             // Conditional background colors based on the probability
-            if(probability < 20) {
+            if(probability < 42) {
                 resultDiv.style.backgroundColor = 'lightgreen';  // Green for low probability
-            } else if(probability < 50) {
+            } else if(probability < 55) {
                 resultDiv.style.backgroundColor = 'khaki';  // Warning color for moderate probability
             } else {
                 resultDiv.style.backgroundColor = 'lightcoral';  // Alert color for high probability
