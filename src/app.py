@@ -181,7 +181,7 @@ def predict():
         }
 
         # Validate and process each feature
-        patient_id = data.get('patient_id')
+        patient_id = data.get('Patient_Id')
 
         # 1. time_in_hospital
         time_in_hospital = data.get('time_in_hospital')
