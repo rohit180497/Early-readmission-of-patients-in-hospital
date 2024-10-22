@@ -5,6 +5,7 @@
 The goal of this project is to develop a machine learning model that predicts the likelihood of early readmission for hospital patients. The model will be trained using a dataset containing patient demographics, medical history, and hospital outcomes. The primary focus will be on improving the accuracy and interpretability of the model, as well as ensuring that it is fair and unbiased.
 
 Data Source: https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008
+
 Research Reference: https://onlinelibrary.wiley.com/doi/10.1155/2014/781670
 Impact of HbA1c Measurement on Hospital Readmission Rates: Analysis of 100k Clinical Database Patient Record By Beata Strack, Jonathan DeShazo, Chris Gennings, Juan Olmo, Sebastian Ventura, Krzysztof Cios, John Clore.
 
