@@ -8,7 +8,7 @@ __pycache__/
 *.so
 old_data/
 scripts/test.ipynb
-leena/
+reports/
 
 # Distribution / packaging
 .Python

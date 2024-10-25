@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                // Pull your project code from GitHub
+                // Pulling project code from GitHub
                 git 'https://github.com/rohit180497/Early-readmission-of-patients-in-hospital.git'
             }
         }
