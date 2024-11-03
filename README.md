@@ -103,7 +103,7 @@ This project is deployed using AWS Elastic Container Service (ECS) with Docker. 
 
 - Threshold: 0.45
 
-- Metric: Precision (77%)
+- Metric: Recall (77%)
 
 - Capture Rate: 63% in the top 4 percentile.
 
