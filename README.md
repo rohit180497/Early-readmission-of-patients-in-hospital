@@ -107,3 +107,5 @@ This project is deployed using AWS Elastic Container Service (ECS) with Docker. 
 
 - Capture Rate: 63% in the top 4 percentile.
 
+## Demo Video
+![early Readmission of Patients Interface AWS](video/AWSDeploymentInterface.gif)
